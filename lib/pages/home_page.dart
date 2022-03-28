@@ -1,7 +1,6 @@
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-
 import '../model/user_model.dart';
 import '../utils/user_preferences.dart';
 
@@ -16,9 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-User user=UserPreferences.loadUser();
-
-
+User user=UserPreferences.getUser();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +28,11 @@ User user=UserPreferences.loadUser();
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Welcome:",style: TextStyle(fontSize: 25),),
+            Text("Welcome to HomePage",style: TextStyle(fontSize: 25),),
+            Text("Your name:"+user.name,style: TextStyle(fontSize: 25),),
+            Text("Your email:"+user.email,style: TextStyle(fontSize: 25),),
+            Text("Your phone:"+user.phone,style: TextStyle(fontSize: 25),),
+            Text("Your password:"+user.password,style: TextStyle(fontSize: 25),),
           ],
         ),
       ),

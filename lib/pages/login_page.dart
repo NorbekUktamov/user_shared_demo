@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
       Navigator.pushNamed(context,HomePage.id);
     }
     User user = User(name:name,email: email,phone:phone, password: password,);
-    UserPreferences.storeUser(user);
+    UserPreferences.setUser(user);
   }
 
   @override
@@ -45,7 +45,17 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            SizedBox(height: 200),
+            SizedBox(height: 50),
+            Center(
+              child:Container(
+                height: 170,
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/images/ic_image.png"),
+                ),
+              ),
+            ),
+
             //#login,#welcome
             Padding(
               padding: EdgeInsets.all(30),

@@ -18,22 +18,26 @@ class SignUpPage extends StatefulWidget {
 class _SignUpPageState extends State<SignUpPage> {
 
 
-
   TextEditingController emailController=  TextEditingController();
   TextEditingController passwordController=  TextEditingController();
   TextEditingController nameController=TextEditingController();
   TextEditingController phoneController=TextEditingController();
 
   void _doLogin() {
-    Navigator.pushNamed(context, HomePage.id);
+
+
 
     String email = emailController.text.toString().trim();
     String password = passwordController.text.toString().trim();
     String name = nameController.text.toString().trim();
     String phone = phoneController.text.toString().trim();
 
+    if(email.isNotEmpty && password.isNotEmpty){
+      Navigator.pushNamed(context,HomePage.id);
+    }
+
     User user = User(name:name,email: email,phone:phone, password: password,);
-    UserPreferences.storeUser(user);
+    UserPreferences.setUser(user);
   }
 
 
@@ -246,13 +250,13 @@ class _SignUpPageState extends State<SignUpPage> {
                           children: [
                             FlatButton(
                               onPressed: (){},
-                              child: Text("Already have an account?",style:TextStyle(color: Colors.grey.shade800) ,),),
+                              child: Text("Already have an account?",style:TextStyle(color: Colors.grey.shade800,fontSize: 15) ,),),
 
                             FlatButton(
                               onPressed: (){
                                 Navigator.pushNamed(context,LoginPage.id);
                               },
-                              child: Text("Login here",style:TextStyle(color: Colors.blue.shade800) ,),),
+                              child: Text("Login here",style:TextStyle(color: Colors.blue.shade800,fontSize: 15) ,),),
                           ],
                         ),
 
